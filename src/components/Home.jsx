@@ -12,6 +12,7 @@ const Home = () => {
               <li> Docker</li>
               <li> Github Action (CI)</li>
               <li> Render (CD)</li>
+              <li> Automatizado</li>
           </ul>
           <p className="status"> Pipeline CI/CD activo</p>
         </div>
