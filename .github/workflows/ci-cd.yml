@@ -3,36 +3,43 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  REGISTRY: ghcr.io
+  # Esto tomará el nombre de tu organización: byzcodedeveloper-rgb
+  IMAGE_NAME: ${{ github.repository_owner }}/react-cicd-demo
 
 jobs:
   # ============================================
-  # CI - Solo verificar que el build funciona
+  # CI: Verificar que la app compila
   # ============================================
   ci:
-    name: 🔍 CI - Build Check
+    name: 🔍 CI - Build & Test
     runs-on: ubuntu-latest
-   
+    
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
-     
+      
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
-     
+      
       - name: 📦 Install dependencies
         run: npm ci
-     
+      
       - name: 🏗️ Build application
         run: npm run build
-     
-      - name: ✅ Verify build
+      
+      - name: ✅ Verify build output
         run: |
           if [ -d "dist" ] && [ -f "dist/index.html" ]; then
             echo "✅ Build successful!"
-            echo "📁 Generated files:"
+            echo "📁 Files generated:"
             ls -la dist/
           else
             echo "❌ Build failed"
@@ -40,44 +47,61 @@ jobs:
           fi
 
   # ============================================
-  # DOCKER BUILD
+  # DOCKER: Construir y subir a GHCR
   # ============================================
   docker:
-    name: 🐳 Build Docker Image
+    name: 🐳 Build & Push to GHCR
     needs: ci
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-   
+    
+    # ⚠️ ESTO ES CRUCIAL PARA ORGANIZACIONES ⚠️
+    permissions:
+      contents: read
+      packages: write  # Permiso para escribir en GitHub Packages
+    
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
-     
+      
       - name: 🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-     
+      
       - name: 🔑 Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-     
+      
+      - name: 🔖 Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=,format=short
+            type=raw,value=latest,enable={{is_default_branch}}
+      
       - name: 🏗️ Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository }}:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   # ============================================
-  # DEPLOY TO RENDER
+  # DEPLOY: Desplegar en Render
   # ============================================
   deploy:
     name: 🚀 Deploy to Render
     needs: docker
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-   
+    
     steps:
       - name: 🚀 Trigger Render Deploy
         env:
@@ -85,4 +109,4 @@ jobs:
         run: |
           echo "📡 Triggering Render deployment..."
           curl -X POST "$RENDER_DEPLOY_HOOK_URL"
-          echo "✅ Deploy triggered!"
+          echo "✅ Deploy triggered successfully!"
