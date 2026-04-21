@@ -1,0 +1,139 @@
+.filtros-galeria {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filtro-btn {
+  background: #1a1a3e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.filtro-btn:hover,
+.filtro-btn.activo {
+  background: #ff6b35;
+  border-color: #ff6b35;
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.galeria-item {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2d 100%);
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.galeria-item:hover {
+  transform: translateY(-5px);
+}
+
+.galeria-imagen {
+  font-size: 4rem;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.galeria-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, #0a0a2a, transparent);
+  padding: 1rem;
+  transform: translateY(100%);
+  transition: transform 0.3s;
+}
+
+.galeria-item:hover .galeria-overlay {
+  transform: translateY(0);
+}
+
+.galeria-overlay h4 {
+  color: #ff6b35;
+  margin-bottom: 0.2rem;
+}
+
+.galeria-overlay p {
+  color: #cccccc;
+  font-size: 0.8rem;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-contenido {
+  background: #1a1a3e;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  border: 1px solid #ff6b35;
+}
+
+.modal-icono {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.modal-contenido h3 {
+  color: #ff6b35;
+  margin-bottom: 0.5rem;
+}
+
+.modal-contenido p {
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.modal-categoria {
+  background: rgba(255, 107, 53, 0.2);
+  color: #ff6b35;
+  padding: 0.2rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .galeria-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

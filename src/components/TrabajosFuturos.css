@@ -1,0 +1,53 @@
+.futuros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.futuro-card {
+  background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2d 100%);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.futuro-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: #ff6b35;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.futuro-icono {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.futuro-card h3 {
+  color: #ff6b35;
+  margin-bottom: 0.5rem;
+}
+
+.futuro-card p {
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.impacto {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.impacto-alto {
+  background: rgba(255, 107, 53, 0.2);
+  color: #ff6b35;
+}
+
+.impacto-medio {
+  background: rgba(0, 194, 186, 0.2);
+  color: #00c2ba;
+}

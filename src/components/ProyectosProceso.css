@@ -1,0 +1,55 @@
+.proceso-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.proceso-card {
+  background: linear-gradient(135deg, #1a1a3e 0%, #0f0f2d 100%);
+  border-radius: 20px;
+  padding: 1.5rem;
+  transition: all 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.proceso-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff6b35;
+}
+
+.proceso-estado {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255, 107, 53, 0.2);
+  color: #ff6b35;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+.proceso-card h3 {
+  color: #00c2ba;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+  padding-right: 80px;
+}
+
+.proceso-card p {
+  color: #cccccc;
+  margin-bottom: 1rem;
+}
+
+.proceso-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: #888;
+}

@@ -1,18 +1,42 @@
 import React from 'react';
+import './TrabajosFuturos.css';
 
 const TrabajosFuturos = () => {
   const proyectos = [
-    "Plataforma de IA Generativa",
-    "Metaverso Corporativo",
-    "Blockchain para Supply Chain"
+    { 
+      nombre: "Plataforma de IA Generativa", 
+      descripcion: "Creación de contenido automático con inteligencia artificial",
+      impacto: "Alto",
+      icono: "🤖"
+    },
+    { 
+      nombre: "Metaverso Corporativo", 
+      descripcion: "Espacios virtuales para reuniones y colaboración",
+      impacto: "Medio",
+      icono: "🌐"
+    },
+    { 
+      nombre: "Blockchain para Supply Chain", 
+      descripcion: "Trazabilidad y transparencia en la cadena de suministro",
+      impacto: "Alto",
+      icono: "⛓️"
+    }
   ];
 
   return (
-    <div className="section-container" style={{ textAlign: 'center' }}>
-      <h2 className="section-title">Trabajos Futuros</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginTop: '2rem' }}>
-        {proyectos.map((p, i) => (
-          <div key={i} style={{ background: '#1a1a3e', padding: '1rem', borderRadius: '8px' }}>🔮 {p}</div>
+    <div className="seccion-container">
+      <h2 className="seccion-titulo">🔮 Trabajos Futuros</h2>
+      <p className="seccion-subtitulo">Innovaciones que estamos explorando</p>
+      <div className="futuros-grid">
+        {proyectos.map((proyecto, index) => (
+          <div key={index} className="futuro-card">
+            <div className="futuro-icono">{proyecto.icono}</div>
+            <h3>{proyecto.nombre}</h3>
+            <p>{proyecto.descripcion}</p>
+            <span className={`impacto impacto-${proyecto.impacto.toLowerCase()}`}>
+              Impacto {proyecto.impacto}
+            </span>
+          </div>
         ))}
       </div>
     </div>
