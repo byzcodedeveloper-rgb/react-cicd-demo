@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import QuienesSomos from './components/QuienesSomos';  // ← Importar
+import QuienesSomos from './components/QuienesSomos';
+import MisionVision from './components/MisionVision';  // ← Importar
 import Servicios from './components/Servicios';
 import Tecnologias from './components/Tecnologias';
 import Proyectos from './components/Proyectos';
@@ -46,7 +47,10 @@ function App() {
           <Hero />
         </section>
         <section id="quienes-somos" className="section-quienes-somos">
-          <QuienesSomos />  {/* ← Nueva sección */}
+          <QuienesSomos />
+        </section>
+        <section id="mision-vision" className="section-mision-vision">
+          <MisionVision />  {/* ← Nueva sección */}
         </section>
         <section id="servicios" className="section-servicios">
           <Servicios />
