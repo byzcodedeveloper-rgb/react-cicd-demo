@@ -6,11 +6,15 @@ import Tecnologias from './components/Tecnologias';
 import Proyectos from './components/Proyectos';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
-import ScrollToTop from './components/ScrollToTop';  // ← Importar el botón
+import ScrollToTop from './components/ScrollToTop';
+// Importar las nuevas subsecciones
+import DesarrolloSoftware from './components/DesarrolloSoftware';
+import AplicacionesMoviles from './components/AplicacionesMoviles';
+import Automatizacion from './components/Automatizacion';
+import RedesCloud from './components/RedesCloud';
 import './App.css';
 
 function App() {
-  // Efecto para el scroll suave con offset del navbar fijo
   useEffect(() => {
     const handleAnchorClick = (e) => {
       const targetId = e.target.getAttribute('href')?.slice(1);
@@ -44,6 +48,19 @@ function App() {
         <section id="servicios" className="section-servicios">
           <Servicios />
         </section>
+        {/* Nuevas subsecciones del dropdown */}
+        <section id="desarrollo-software">
+          <DesarrolloSoftware />
+        </section>
+        <section id="aplicaciones-moviles">
+          <AplicacionesMoviles />
+        </section>
+        <section id="automatizacion">
+          <Automatizacion />
+        </section>
+        <section id="redes-cloud">
+          <RedesCloud />
+        </section>
         <section id="tecnologias" className="section-tecnologias">
           <Tecnologias />
         </section>
@@ -55,7 +72,7 @@ function App() {
         </section>
       </main>
       <Footer />
-      <ScrollToTop />  {/* ← Agregar el botón aquí */}
+      <ScrollToTop />
     </div>
   );
 }

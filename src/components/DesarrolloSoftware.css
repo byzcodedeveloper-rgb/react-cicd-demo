@@ -1,0 +1,57 @@
+.subseccion-container {
+  padding: 120px 20px 80px;
+  background: linear-gradient(135deg, #0a0a2a 0%, #1a1a3e 100%);
+  color: white;
+  min-height: 100vh;
+}
+
+.subseccion-container h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subseccion-descripcion {
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: #cccccc;
+}
+
+.subseccion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subseccion-card {
+  background: rgba(255,255,255,0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  transition: transform 0.3s;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.subseccion-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,107,53,0.1);
+  border-color: #ff6b35;
+}
+
+.subseccion-card h3 {
+  color: #ff6b35;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.subseccion-card p {
+  color: #cccccc;
+  line-height: 1.6;
+}
