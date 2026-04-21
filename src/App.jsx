@@ -1,29 +1,39 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import QuienesSomos from './components/QuienesSomos';
-import MisionVision from './components/MisionVision';  // ← Importar
-import Servicios from './components/Servicios';
-import Tecnologias from './components/Tecnologias';
-import Proyectos from './components/Proyectos';
-import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import DesarrolloSoftware from './components/DesarrolloSoftware';
-import AplicacionesMoviles from './components/AplicacionesMoviles';
-import Automatizacion from './components/Automatizacion';
-import RedesCloud from './components/RedesCloud';
 import './App.css';
 
+// Importar todos los componentes (los crearé a continuación)
+import Inicio from './components/Inicio';
+import ServiciosDesarrollo from './components/ServiciosDesarrollo';
+import ServiciosRedes from './components/ServiciosRedes';
+import Portafolio from './components/Portafolio';
+import Colaboradores from './components/Colaboradores';
+import Mision from './components/Mision';
+import Vision from './components/Vision';
+import QuienesSomos from './components/QuienesSomos';
+import Contactenos from './components/Contactenos';
+import ProyectosActivos from './components/ProyectosActivos';
+import ProyectosProceso from './components/ProyectosProceso';
+import TrabajosFuturos from './components/TrabajosFuturos';
+import Galeria from './components/Galeria';
+
 function App() {
+  // Efecto para el scroll suave con offset del navbar
   useEffect(() => {
     const handleAnchorClick = (e) => {
       const targetId = e.target.getAttribute('href')?.slice(1);
       if (targetId && document.getElementById(targetId)) {
         e.preventDefault();
-        document.getElementById(targetId).scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
+        const element = document.getElementById(targetId);
+        const offset = 120; // Altura del navbar (dos filas)
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
         });
       }
     };
@@ -43,38 +53,58 @@ function App() {
     <div className="App">
       <Navbar />
       <main>
-        <section id="inicio" className="section-hero">
-          <Hero />
+        {/* SECCIONES DEL MENÚ PRINCIPAL */}
+        <section id="inicio" className="section">
+          <Inicio />
         </section>
-        <section id="quienes-somos" className="section-quienes-somos">
+
+        <section id="servicios-desarrollo" className="section">
+          <ServiciosDesarrollo />
+        </section>
+
+        <section id="servicios-redes" className="section">
+          <ServiciosRedes />
+        </section>
+
+        <section id="portafolio" className="section">
+          <Portafolio />
+        </section>
+
+        <section id="colaboradores" className="section">
+          <Colaboradores />
+        </section>
+
+        <section id="mision" className="section">
+          <Mision />
+        </section>
+
+        <section id="vision" className="section">
+          <Vision />
+        </section>
+
+        <section id="quienes-somos" className="section">
           <QuienesSomos />
         </section>
-        <section id="mision-vision" className="section-mision-vision">
-          <MisionVision />  {/* ← Nueva sección */}
+
+        <section id="contactenos" className="section">
+          <Contactenos />
         </section>
-        <section id="servicios" className="section-servicios">
-          <Servicios />
+
+        {/* SECCIONES DEL SUBMENÚ */}
+        <section id="proyectos-activos" className="section">
+          <ProyectosActivos />
         </section>
-        <section id="desarrollo-software">
-          <DesarrolloSoftware />
+
+        <section id="proyectos-proceso" className="section">
+          <ProyectosProceso />
         </section>
-        <section id="aplicaciones-moviles">
-          <AplicacionesMoviles />
+
+        <section id="trabajos-futuros" className="section">
+          <TrabajosFuturos />
         </section>
-        <section id="automatizacion">
-          <Automatizacion />
-        </section>
-        <section id="redes-cloud">
-          <RedesCloud />
-        </section>
-        <section id="tecnologias" className="section-tecnologias">
-          <Tecnologias />
-        </section>
-        <section id="proyectos" className="section-proyectos">
-          <Proyectos />
-        </section>
-        <section id="contacto" className="section-contacto">
-          <Contacto />
+
+        <section id="galeria" className="section">
+          <Galeria />
         </section>
       </main>
       <Footer />
