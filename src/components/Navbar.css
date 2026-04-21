@@ -30,12 +30,16 @@
   background-clip: text;
   color: transparent;
   text-decoration: none;
+  white-space: nowrap;
 }
 
+/* MENÚ CENTRADO */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-menu li a {
@@ -44,6 +48,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .nav-menu li a:hover,
@@ -51,11 +56,64 @@
   color: #667eea;
 }
 
+/* Botón menú hamburguesa para móvil */
+.menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* ======================================== */
+/* RESPONSIVE: Tabletas y móviles */
+/* ======================================== */
 @media (max-width: 768px) {
-  .nav-menu {
-    gap: 1rem;
+  .menu-icon {
+    display: block;
   }
+
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: white;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    transition: left 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-menu li a {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    display: block;
+  }
+
+  .navbar.scrolled .nav-menu {
+    background: white;
+  }
+}
+
+/* Para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
   .logo a {
     font-size: 1.2rem;
+  }
+  
+  .nav-menu {
+    gap: 1.5rem;
+  }
+  
+  .nav-menu li a {
+    font-size: 1rem;
   }
 }

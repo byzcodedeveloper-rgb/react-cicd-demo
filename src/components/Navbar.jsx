@@ -4,6 +4,7 @@ import './Navbar.css';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,13 +22,22 @@ const Navbar = () => {
     { id: 'contacto', label: 'Contacto' }
   ];
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
         <div className="logo">
-          <a href="#bienvenida">ByZcode</a>
+          <a href="#bienvenida" onClick={closeMenu}>ByZcode</a>
         </div>
-        <ul className="nav-menu">
+        
+        <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </div>
+        
+        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           {navItems.map(item => (
             <li key={item.id}>
               <ScrollLink
@@ -37,6 +47,7 @@ const Navbar = () => {
                 offset={-70}
                 spy={true}
                 activeClass="active"
+                onClick={closeMenu}
               >
                 {item.label}
               </ScrollLink>
