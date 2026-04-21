@@ -1,18 +1,37 @@
-import { useState } from 'react'
-import React from 'react'
-import Header from './components/Header'
-import Home from './components/Home'
-import './App.css'
+import React from 'react';
+import Navbar from './components/Navbar';
+import Bienvenida from './components/Bienvenida';
+import Servicios from './components/Servicios';
+import Tecnologias from './components/Tecnologias';
+import Proyectos from './components/Proyectos';
+import Contacto from './components/Contacto';
+import Footer from './components/Footer';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className='App'>
-      <Header/>
-      <Home/>
+    <div className="App">
+      <Navbar />
+      <main>
+        <section id="bienvenida">
+          <Bienvenida />
+        </section>
+        <section id="servicios">
+          <Servicios />
+        </section>
+        <section id="tecnologias">
+          <Tecnologias />
+        </section>
+        <section id="proyectos">
+          <Proyectos />
+        </section>
+        <section id="contacto">
+          <Contacto />
+        </section>
+      </main>
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
