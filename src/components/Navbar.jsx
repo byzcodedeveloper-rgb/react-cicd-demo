@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { Link as ScrollLink } from 'react-scroll';
 import './Navbar.css';
 
 const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Elementos del menú principal
   const navItems = [
     { id: 'inicio', label: 'Inicio' },
     { id: 'quienes-somos', label: 'Quiénes Somos' },
+    { id: 'mision-vision', label: 'Misión y Visión' },
     { id: 'servicios', label: 'Servicios', dropdown: true },
     { id: 'tecnologias', label: 'Tecnologías' },
     { id: 'proyectos', label: 'Proyectos' },
     { id: 'contacto', label: 'Contacto' }
   ];
 
+  // Elementos del submenú desplegable de Servicios
   const dropdownItems = [
     { id: 'desarrollo-software', label: 'Desarrollo de Software' },
     { id: 'aplicaciones-moviles', label: 'Aplicaciones Móviles' },
@@ -22,6 +24,25 @@ const Navbar = () => {
     { id: 'redes-cloud', label: 'Redes y Cloud' }
   ];
 
+  // Función para hacer scroll suave a una sección
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const offset = 70; // Altura del navbar fijo
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    // Cerrar menú móvil después de hacer clic
+    setMobileMenuOpen(false);
+    setDropdownOpen(false);
+  };
+
+  // Cerrar menú móvil
   const closeMenu = () => {
     setMobileMenuOpen(false);
     setDropdownOpen(false);
@@ -30,16 +51,22 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-container">
+        {/* Logo */}
         <div className="logo">
-          <a href="#inicio" onClick={closeMenu}>ByZcode</a>
+          <a href="#inicio" onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('inicio');
+          }}>ByZcode</a>
         </div>
         
+        {/* Icono menú hamburguesa (solo móvil) */}
         <div className="menu-icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           ☰
         </div>
         
+        {/* Menú de navegación */}
         <ul className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
-          {navItems.map(item => (
+          {navItems.map((item) => (
             <li 
               key={item.id} 
               className={item.dropdown ? 'dropdown' : ''}
@@ -48,37 +75,38 @@ const Navbar = () => {
             >
               {item.dropdown ? (
                 <>
+                  {/* Item con desplegable */}
                   <span className="dropdown-trigger">
                     {item.label} <span className="arrow">▼</span>
                   </span>
                   <ul className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
-                    {dropdownItems.map(subItem => (
+                    {dropdownItems.map((subItem) => (
                       <li key={subItem.id}>
-                        <ScrollLink
-                          to={subItem.id}
-                          smooth={true}
-                          duration={500}
-                          offset={-70}
-                          onClick={closeMenu}
+                        <a 
+                          href={`#${subItem.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            scrollToSection(subItem.id);
+                          }}
                         >
                           {subItem.label}
-                        </ScrollLink>
+                        </a>
                       </li>
                     ))}
                   </ul>
                 </>
               ) : (
-                <ScrollLink
-                  to={item.id}
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                  spy={true}
-                  activeClass="active"
-                  onClick={closeMenu}
+                /* Item normal sin desplegable */
+                <a 
+                  href={`#${item.id}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.id);
+                  }}
+                  className={window.location.hash === `#${item.id}` ? 'active' : ''}
                 >
                   {item.label}
-                </ScrollLink>
+                </a>
               )}
             </li>
           ))}
