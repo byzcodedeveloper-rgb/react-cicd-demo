@@ -28,7 +28,7 @@ body {
 /* Estilo para todas las secciones */
 .section {
   padding: 100px 20px;
-  scroll-margin-top: 120px; /* Espacio para el navbar fijo */
+  scroll-margin-top: 120px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -42,6 +42,12 @@ body {
 
 .section:nth-child(odd) {
   background: #0a0a2a;
+}
+
+/* Sección de tarjetas de proyectos - sin min-height para que se vea mejor */
+.section.proyectos-tarjetas {
+  min-height: auto;
+  padding: 80px 20px;
 }
 
 /* Contenedor interno de cada sección */
@@ -102,6 +108,10 @@ body {
   .section-subtitle {
     font-size: 1rem;
     margin-bottom: 2rem;
+  }
+  
+  .section.proyectos-tarjetas {
+    padding: 50px 15px;
   }
 }
 

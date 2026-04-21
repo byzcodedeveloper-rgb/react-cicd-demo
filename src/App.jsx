@@ -4,7 +4,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
-// Importar todos los componentes (los crearé a continuación)
+// Importar todos los componentes
 import Inicio from './components/Inicio';
 import ServiciosDesarrollo from './components/ServiciosDesarrollo';
 import ServiciosRedes from './components/ServiciosRedes';
@@ -18,6 +18,7 @@ import ProyectosActivos from './components/ProyectosActivos';
 import ProyectosProceso from './components/ProyectosProceso';
 import TrabajosFuturos from './components/TrabajosFuturos';
 import Galeria from './components/Galeria';
+import ProyectosSection from './components/ProyectosSection';
 
 function App() {
   // Efecto para el scroll suave con offset del navbar
@@ -68,6 +69,11 @@ function App() {
 
         <section id="portafolio" className="section">
           <Portafolio />
+        </section>
+
+        {/* SECCIÓN DE TARJETAS DE PROYECTOS (NUEVA) */}
+        <section id="proyectos" className="section proyectos-tarjetas">
+          <ProyectosSection />
         </section>
 
         <section id="colaboradores" className="section">
