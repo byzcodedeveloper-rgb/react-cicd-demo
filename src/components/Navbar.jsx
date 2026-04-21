@@ -8,6 +8,7 @@ const Navbar = () => {
 
   const navItems = [
     { id: 'inicio', label: 'Inicio' },
+    { id: 'quienes-somos', label: 'Quiénes Somos' },
     { id: 'servicios', label: 'Servicios', dropdown: true },
     { id: 'tecnologias', label: 'Tecnologías' },
     { id: 'proyectos', label: 'Proyectos' },
@@ -21,11 +22,16 @@ const Navbar = () => {
     { id: 'redes-cloud', label: 'Redes y Cloud' }
   ];
 
+  const closeMenu = () => {
+    setMobileMenuOpen(false);
+    setDropdownOpen(false);
+  };
+
   return (
     <nav className="navbar">
       <div className="nav-container">
         <div className="logo">
-          <a href="#inicio">ByZcode</a>
+          <a href="#inicio" onClick={closeMenu}>ByZcode</a>
         </div>
         
         <div className="menu-icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -53,7 +59,7 @@ const Navbar = () => {
                           smooth={true}
                           duration={500}
                           offset={-70}
-                          onClick={() => setMobileMenuOpen(false)}
+                          onClick={closeMenu}
                         >
                           {subItem.label}
                         </ScrollLink>
@@ -69,7 +75,7 @@ const Navbar = () => {
                   offset={-70}
                   spy={true}
                   activeClass="active"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   {item.label}
                 </ScrollLink>

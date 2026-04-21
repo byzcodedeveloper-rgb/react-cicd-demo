@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import QuienesSomos from './components/QuienesSomos';  // ← Importar
 import Servicios from './components/Servicios';
 import Tecnologias from './components/Tecnologias';
 import Proyectos from './components/Proyectos';
 import Contacto from './components/Contacto';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-// Importar las nuevas subsecciones
 import DesarrolloSoftware from './components/DesarrolloSoftware';
 import AplicacionesMoviles from './components/AplicacionesMoviles';
 import Automatizacion from './components/Automatizacion';
@@ -45,10 +45,12 @@ function App() {
         <section id="inicio" className="section-hero">
           <Hero />
         </section>
+        <section id="quienes-somos" className="section-quienes-somos">
+          <QuienesSomos />  {/* ← Nueva sección */}
+        </section>
         <section id="servicios" className="section-servicios">
           <Servicios />
         </section>
-        {/* Nuevas subsecciones del dropdown */}
         <section id="desarrollo-software">
           <DesarrolloSoftware />
         </section>

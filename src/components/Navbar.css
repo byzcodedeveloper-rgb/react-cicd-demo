@@ -103,11 +103,17 @@
   display: block;
   padding: 0.5rem 1rem;
   color: white;
+  text-decoration: none;
 }
 
 .dropdown-menu li a:hover {
   background: #ff6b35;
   color: white;
+}
+
+/* Elemento activo */
+.nav-menu li a.active {
+  color: #ff6b35;
 }
 
 /* Mobile */
@@ -152,15 +158,26 @@
     left: 0;
   }
 
+  .dropdown {
+    width: 100%;
+    text-align: center;
+  }
+
   .dropdown-menu {
     position: static;
+    background: #1a1a3e;
     opacity: 1;
     visibility: visible;
     display: none;
-    background: #2a2a5a;
+    margin-top: 0.5rem;
+    width: 100%;
   }
 
   .dropdown-menu.show {
     display: block;
+  }
+  
+  .dropdown-trigger {
+    justify-content: center;
   }
 }
