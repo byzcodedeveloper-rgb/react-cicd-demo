@@ -17,9 +17,15 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
   padding: 0 20px;
+}
+
+.logo {
+  position: absolute;
+  left: 20px;
 }
 
 .logo a {
@@ -40,6 +46,7 @@
   gap: 2rem;
   margin: 0;
   padding: 0;
+  justify-content: center;
 }
 
 .nav-menu li a {
@@ -62,12 +69,24 @@
   font-size: 1.8rem;
   cursor: pointer;
   color: #333;
+  position: absolute;
+  right: 20px;
+  z-index: 100;
 }
 
 /* ======================================== */
 /* RESPONSIVE: Tabletas y móviles */
 /* ======================================== */
 @media (max-width: 768px) {
+  .nav-container {
+    justify-content: space-between;
+  }
+  
+  .logo {
+    position: relative;
+    left: 0;
+  }
+  
   .menu-icon {
     display: block;
   }
