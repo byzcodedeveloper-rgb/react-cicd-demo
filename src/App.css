@@ -1,5 +1,5 @@
 /* ============================================
-   APP - ESTILOS GLOBALES
+   APP - ESTILOS GLOBALES BYZCODE
    ============================================ */
 
 * {
@@ -25,7 +25,7 @@ body {
   flex-direction: column;
 }
 
-/* Estilo para todas las secciones */
+/* ===== ESTILO PARA TODAS LAS SECCIONES ===== */
 .section {
   padding: 100px 20px;
   scroll-margin-top: 120px;
@@ -44,10 +44,11 @@ body {
   background: #0a0a2a;
 }
 
-/* Sección de tarjetas de proyectos - sin min-height para que se vea mejor */
-.section.proyectos-tarjetas {
+/* Sección de tarjetas de proyectos - estilo como en el sitio original */
+.section.tarjetas-section {
+  background: #0a0a2a;
   min-height: auto;
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
 
 /* Contenedor interno de cada sección */
@@ -57,7 +58,7 @@ body {
   width: 100%;
 }
 
-/* Títulos de sección */
+/* ===== TÍTULOS DE SECCIÓN ===== */
 .section-title {
   font-size: 2.5rem;
   text-align: center;
@@ -75,7 +76,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* Botón principal */
+/* ===== BOTÓN PRINCIPAL ===== */
 .btn-primary {
   display: inline-block;
   background: #ff6b35;
@@ -94,11 +95,18 @@ body {
   transform: translateY(-2px);
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     padding: 60px 20px;
     scroll-margin-top: 100px;
+    min-height: auto;
   }
   
   .section-title {
@@ -110,8 +118,18 @@ body {
     margin-bottom: 2rem;
   }
   
-  .section.proyectos-tarjetas {
-    padding: 50px 15px;
+  .section.tarjetas-section {
+    padding: 40px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 40px 15px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
   }
 }
 

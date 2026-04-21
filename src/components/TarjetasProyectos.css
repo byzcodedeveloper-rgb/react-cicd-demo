@@ -1,0 +1,74 @@
+.tarjetas-proyectos-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.tarjetas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.tarjeta-item {
+  background: #1a1a3e;
+  border-radius: 15px;
+  padding: 2rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tarjeta-item:hover {
+  transform: translateY(-5px);
+  background: #222255;
+  border-color: #ff6b35;
+}
+
+.tarjeta-icono {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-titulo {
+  font-size: 1.2rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.tarjeta-descripcion {
+  font-size: 0.8rem;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+.tarjeta-flecha {
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.tarjeta-item:hover .tarjeta-flecha {
+  opacity: 1;
+  transform: translateX(5px);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .tarjetas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .tarjetas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tarjeta-item {
+    padding: 1.5rem;
+  }
+}

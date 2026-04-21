@@ -18,7 +18,7 @@ import ProyectosActivos from './components/ProyectosActivos';
 import ProyectosProceso from './components/ProyectosProceso';
 import TrabajosFuturos from './components/TrabajosFuturos';
 import Galeria from './components/Galeria';
-import ProyectosSection from './components/ProyectosSection';
+import TarjetasProyectos from './components/TarjetasProyectos';
 
 function App() {
   // Efecto para el scroll suave con offset del navbar
@@ -71,9 +71,9 @@ function App() {
           <Portafolio />
         </section>
 
-        {/* SECCIÓN DE TARJETAS DE PROYECTOS (NUEVA) */}
-        <section id="proyectos" className="section proyectos-tarjetas">
-          <ProyectosSection />
+        {/* SECCIÓN DE TARJETAS DE PROYECTOS (como en el sitio original) */}
+        <section id="tarjetas-proyectos" className="section tarjetas-section">
+          <TarjetasProyectos />
         </section>
 
         <section id="colaboradores" className="section">
