@@ -1,4 +1,4 @@
-/* Navbar siempre visible - sin cambios al hacer scroll */
+/* Navbar siempre visible - menú centrado */
 .navbar {
   position: fixed;
   top: 0;
@@ -13,9 +13,15 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
   padding: 0 20px;
+}
+
+.logo {
+  position: absolute;
+  left: 20px;
 }
 
 .logo a {
@@ -28,12 +34,14 @@
   text-decoration: none;
 }
 
+/* MENÚ CENTRADO */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 2rem;
   margin: 0;
   padding: 0;
+  justify-content: center;
 }
 
 .nav-menu li a,
@@ -108,9 +116,20 @@
   font-size: 1.8rem;
   cursor: pointer;
   color: white;
+  position: absolute;
+  right: 20px;
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    justify-content: space-between;
+  }
+  
+  .logo {
+    position: relative;
+    left: 0;
+  }
+  
   .menu-icon {
     display: block;
   }
