@@ -1,19 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import './Navbar.css';
 
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'inicio', label: 'Inicio' },
@@ -30,23 +21,18 @@ const Navbar = () => {
     { id: 'redes-cloud', label: 'Redes y Cloud' }
   ];
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-    setDropdownOpen(false);
-  };
-
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+    <nav className="navbar">
       <div className="nav-container">
         <div className="logo">
-          <a href="#inicio" onClick={closeMenu}>ByZcode</a>
+          <a href="#inicio">ByZcode</a>
         </div>
         
-        <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+        <div className="menu-icon" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
           ☰
         </div>
         
-        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <ul className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
           {navItems.map(item => (
             <li 
               key={item.id} 
@@ -67,7 +53,7 @@ const Navbar = () => {
                           smooth={true}
                           duration={500}
                           offset={-70}
-                          onClick={closeMenu}
+                          onClick={() => setMobileMenuOpen(false)}
                         >
                           {subItem.label}
                         </ScrollLink>
@@ -83,7 +69,7 @@ const Navbar = () => {
                   offset={-70}
                   spy={true}
                   activeClass="active"
-                  onClick={closeMenu}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </ScrollLink>
