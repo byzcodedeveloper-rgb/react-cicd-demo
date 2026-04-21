@@ -13,23 +13,6 @@ const Footer = () => {
     { name: 'GitHub', url: 'https://github.com/byzcode', icon: '💻' }
   ];
 
-  // Enlaces rápidos
-  const quickLinks = [
-    { name: 'Inicio', id: 'inicio' },
-    { name: 'Quiénes Somos', id: 'quienes-somos' },
-    { name: 'Servicios', id: 'servicios' },
-    { name: 'Proyectos', id: 'proyectos' },
-    { name: 'Contacto', id: 'contacto' }
-  ];
-
-  // Enlaces legales
-  const legalLinks = [
-    { name: 'Política de Privacidad', url: '/privacidad' },
-    { name: 'Términos y Condiciones', url: '/terminos' },
-    { name: 'Aviso Legal', url: '/aviso-legal' },
-    { name: 'Política de Cookies', url: '/cookies' }
-  ];
-
   // Función para scroll suave
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -43,116 +26,68 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="footer-container">
-        {/* Columna 1 - Información de la empresa */}
-        <div className="footer-col">
-          <h3 className="footer-logo">ByZcode</h3>
+      <div className="footer-content">
+        {/* Fila 1: Logo y descripción */}
+        <div className="footer-brand">
+          <h2 className="footer-logo">ByZcode</h2>
           <p className="footer-description">
-            Innovación y Desarrollo Tecnológico a tu Medida. 
-            Creamos soluciones de software, aplicaciones, automatización y redes 
-            que impulsan tu negocio al siguiente nivel.
+            Innovación y Desarrollo Tecnológico a tu Medida.
           </p>
-          <div className="footer-social">
-            <h4>Síguenos</h4>
-            <div className="social-links">
-              {socialLinks.map((social, index) => (
-                <a 
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label={social.name}
-                >
-                  <span className="social-icon">{social.icon}</span>
-                  <span className="social-name">{social.name}</span>
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Columna 2 - Contacto */}
-        <div className="footer-col">
-          <h4>Contacto</h4>
+        {/* Fila 2: Contacto y Redes Sociales */}
+        <div className="footer-contact">
           <div className="contact-info">
             <div className="contact-item">
-              <span className="contact-icon">📧</span>
-              <div>
-                <strong>Email</strong>
-                <a href="mailto:info@byzcode.com">info@byzcode.com</a>
-              </div>
+              <span>📧</span>
+              <a href="mailto:info@byzcode.com">info@byzcode.com</a>
             </div>
             <div className="contact-item">
-              <span className="contact-icon">📞</span>
-              <div>
-                <strong>Teléfono</strong>
-                <a href="tel:+573001234567">+57 300 123 4567</a>
-              </div>
+              <span>📞</span>
+              <a href="tel:+573001234567">+57 300 123 4567</a>
             </div>
             <div className="contact-item">
-              <span className="contact-icon">💬</span>
-              <div>
-                <strong>WhatsApp</strong>
-                <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer">
-                  +57 300 123 4567
-                </a>
-              </div>
+              <span>💬</span>
+              <a href="https://wa.me/573001234567" target="_blank" rel="noopener noreferrer">
+                WhatsApp
+              </a>
             </div>
             <div className="contact-item">
-              <span className="contact-icon">📍</span>
-              <div>
-                <strong>Ubicación</strong>
-                <span>Bogotá, Colombia</span>
-              </div>
+              <span>📍</span>
+              <span>Bogotá, Colombia</span>
             </div>
+          </div>
+
+          <div className="social-icons">
+            {socialLinks.map((social, index) => (
+              <a 
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-icon-link"
+                aria-label={social.name}
+              >
+                {social.icon}
+              </a>
+            ))}
           </div>
         </div>
 
-        {/* Columna 3 - Enlaces rápidos */}
-        <div className="footer-col">
-          <h4>Enlaces Rápidos</h4>
-          <ul className="footer-links">
-            {quickLinks.map((link, index) => (
-              <li key={index}>
-                <a 
-                  href={`#${link.id}`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.id);
-                  }}
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+        {/* Fila 3: Enlaces rápidos */}
+        <div className="footer-links-row">
+          <a href="#inicio" onClick={(e) => { e.preventDefault(); scrollToSection('inicio'); }}>Inicio</a>
+          <a href="#quienes-somos" onClick={(e) => { e.preventDefault(); scrollToSection('quienes-somos'); }}>Quiénes Somos</a>
+          <a href="#servicios" onClick={(e) => { e.preventDefault(); scrollToSection('servicios'); }}>Servicios</a>
+          <a href="#tecnologias" onClick={(e) => { e.preventDefault(); scrollToSection('tecnologias'); }}>Tecnologías</a>
+          <a href="#proyectos" onClick={(e) => { e.preventDefault(); scrollToSection('proyectos'); }}>Proyectos</a>
+          <a href="#contacto" onClick={(e) => { e.preventDefault(); scrollToSection('contacto'); }}>Contacto</a>
         </div>
 
-        {/* Columna 4 - Legales */}
-        <div className="footer-col">
-          <h4>Legales</h4>
-          <ul className="footer-links">
-            {legalLinks.map((link, index) => (
-              <li key={index}>
-                <a href={link.url}>{link.name}</a>
-              </li>
-            ))}
-          </ul>
-          <div className="footer-certificaciones">
-            <p>🔒 Sitio seguro</p>
-            <p>✨ Certificado SSL</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="footer-bottom">
-        <div className="footer-bottom-container">
+        {/* Fila 4: Copyright */}
+        <div className="footer-copyright">
           <p>&copy; {currentYear} ByZcode - Todos los derechos reservados.</p>
-          <p className="footer-credits">
-            Desarrollado con ❤️ en React + CI/CD | Despliegue continuo en Render
-          </p>
+          <p className="footer-credits">Desarrollado con React + CI/CD en Render</p>
         </div>
       </div>
     </footer>
