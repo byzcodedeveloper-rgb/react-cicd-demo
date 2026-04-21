@@ -1,12 +1,6 @@
 .tecnologias-container {
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  text-align: center;
-}
-
-.tecnologias-container h2 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1rem;
+  background: #0a0a2a;
+  padding: 80px 20px;
 }
 
 .tecnologias-grid {
@@ -14,19 +8,21 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
-  margin-top: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .tech-badge {
-  background: white;
+  background: #1a1a3e;
+  color: #00c2ba;
   padding: 0.8rem 1.5rem;
   border-radius: 50px;
-  font-weight: bold;
-  color: #667eea;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s;
+  font-weight: 500;
+  transition: all 0.3s;
 }
 
 .tech-badge:hover {
+  background: #ff6b35;
+  color: white;
   transform: scale(1.05);
 }

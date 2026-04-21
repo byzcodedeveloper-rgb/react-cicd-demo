@@ -9,6 +9,7 @@ const Footer = () => {
       <div className="container">
         <p>&copy; {currentYear} ByZcode. Todos los derechos reservados.</p>
         <p>Desarrollado con React + CI/CD en Render</p>
+        <p><a href="#inicio" className="footer-link">Volver arriba ↑</a></p>
       </div>
     </footer>
   );

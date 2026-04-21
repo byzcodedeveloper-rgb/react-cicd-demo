@@ -1,11 +1,20 @@
 .footer {
-  background: #2d3748;
-  color: white;
+  background: #0a0a2a;
+  color: #cccccc;
   text-align: center;
   padding: 2rem;
-  margin-top: auto;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .footer p {
   margin: 0.5rem 0;
+}
+
+.footer-link {
+  color: #ff6b35;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }

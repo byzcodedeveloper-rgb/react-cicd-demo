@@ -30,7 +30,6 @@
   line-height: 1.6;
 }
 
-/* Animación de fondo */
 .hero-container::before {
   content: '';
   position: absolute;
@@ -42,12 +41,10 @@
   z-index: 1;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .hero-content h1 {
     font-size: 2rem;
   }
-  
   .hero-subtitle {
     font-size: 1rem;
   }

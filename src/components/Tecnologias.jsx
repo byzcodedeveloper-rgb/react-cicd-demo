@@ -4,19 +4,18 @@ import './Tecnologias.css';
 const Tecnologias = () => {
   const tecnologias = [
     "React", "Node.js", "Python", "Docker",
-    "MongoDB", "PostgreSQL", "GitHub Actions", "AWS"
+    "MongoDB", "PostgreSQL", "GitHub Actions", "AWS",
+    "TypeScript", "Redis", "Nginx", "Firebase"
   ];
 
   return (
     <div className="tecnologias-container">
       <div className="container">
-        <h2>Tecnologías que Utilizamos</h2>
+        <h2 className="section-title">Tecnologías que Utilizamos</h2>
         <p className="section-subtitle">Stack moderno y escalable</p>
         <div className="tecnologias-grid">
           {tecnologias.map((tech, index) => (
-            <div key={index} className="tech-badge">
-              {tech}
-            </div>
+            <div key={index} className="tech-badge">{tech}</div>
           ))}
         </div>
       </div>
